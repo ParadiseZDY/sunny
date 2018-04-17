@@ -12,7 +12,9 @@ import java.util.List;
  **/
 public interface IGmsConfigService {
 
-	public GmsConfig selectByPrimaryKey(Integer id);
+    List<GmsConfig> getListFromCache(GmsConfig gmsConfig);
+
+    public GmsConfig selectByPrimaryKey(Integer id);
 
 	public int deleteByPrimaryKey(Integer id);
 
