@@ -1,5 +1,5 @@
 <ehcache>  
-    <diskStore path="grampus_cache"/>  
+    <diskStore path="sunny_cache"/>
     <defaultCache  
            maxElementsInMemory="10000"  
            eternal="false"  
@@ -7,69 +7,15 @@
            timeToLiveSeconds="300"  
            overflowToDisk="false"/>  
            
-     <cache name="CACHE-GRAMPUS-IMAGE"
+    <cache name="CACHE-SUNNY-IMAGE"
            maxElementsOnDisk="0"  
            maxElementsInMemory="1000"
            eternal="true"  
            overflowToDisk="false"  
            diskPersistent="false"
            memoryStoreEvictionPolicy="LRU"/>
-           
-     <cache name="CACHE-GMS-SHOP"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="10000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/>
-           
-     <cache name="CACHE-GMS-GOODSSHELF"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="10000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/>
-           
-     <cache name="CACHE-GMS-CATEGORYITEM"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="10000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/>
-           
-     <cache name="CACHE-GMS-GOODS"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="10000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/>
-           
-           
-    <!--  <cache name="CACHE-BMS-MATERIAL"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="3000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/>
-     <cache name="CACHE-BMS-PRODUCT"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="3000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/>
-     <cache name="CACHE-BMS-PRODUCT_MATERIAL"
-           maxElementsOnDisk="0"  
-           maxElementsInMemory="3000"
-           eternal="true"  
-           overflowToDisk="false"  
-           diskPersistent="false"
-           memoryStoreEvictionPolicy="LRU"/> -->
-</ehcache>  
+
+</ehcache>
 <!--  
 <diskStore>==========当内存缓存中对象数量超过maxElementsInMemory时,将缓存对象写到磁盘缓存中(需对象实现序列化接口)  
 <diskStore path="">==用来配置磁盘缓存使用的物理路径,Ehcache磁盘缓存使用的文件后缀名是*.data和*.index  
