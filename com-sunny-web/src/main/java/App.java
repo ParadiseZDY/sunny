@@ -1,6 +1,3 @@
-import com.alibaba.fastjson.JSON;
-import com.mryx.schedule.ZKScheduleManager;
-import com.mryx.schedule.web.ManagerServlet;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -10,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,8 +18,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * springboot 项目启动类
@@ -65,27 +59,6 @@ public class App {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
-    }
-
-    @Bean(initMethod="init")
-    public ZKScheduleManager taskScheduler() {
-        ZKScheduleManager zkScheduleManager =new ZKScheduleManager();
-        zkScheduleManager.setPoolSize(20);//默认1,同一时间最多可以20个定时任务同时运行
-        Map<String, String> zkConfig = new HashMap<String, String>();
-        zkConfig.put("zkConnectString", zkConnectString);
-        zkConfig.put("rootPath", "/com/sunny");
-        zkConfig.put("zkSessionTimeout", "60000");
-        zkConfig.put("userName", "ScheduleAdmin");
-        zkConfig.put("password", "password");
-        zkConfig.put("autoRegisterTask", "true");
-        logger.info("ZKScheduleManager zkConfig："+ JSON.toJSONString(zkConfig));
-        zkScheduleManager.setZkConfig(zkConfig);
-        return zkScheduleManager;
-    }
-
-    @Bean
-    public ServletRegistrationBean scheduleManagerServlet() {
-        return new ServletRegistrationBean(new ManagerServlet(), "/schedule");
     }
 
     public static void main(String[] args){
