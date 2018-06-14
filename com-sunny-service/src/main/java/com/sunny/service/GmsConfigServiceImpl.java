@@ -17,7 +17,7 @@ import java.util.List;
  * @author zhao.dy
  * @date 2018-04-16 12:20
  **/
-@Service
+@Service("gmsConfigService")
 public class GmsConfigServiceImpl implements IGmsConfigService {
 
 	private static Logger logger = LoggerFactory.getLogger(GmsConfigServiceImpl.class);
