@@ -7,7 +7,7 @@ import java.util.Date;
  * @author zhao.dy
  * @date 12:21 2018/4/16
  */
-public abstract class Entry extends Page {
+public class Entry extends Page {
 
 	private static final long serialVersionUID = -6897372035350453832L;
 

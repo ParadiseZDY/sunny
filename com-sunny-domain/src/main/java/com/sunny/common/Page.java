@@ -8,13 +8,13 @@ import java.io.Serializable;
  * @author zhao.dy
  * @date 12:22 2018/4/16
  */
-public abstract class Page implements Serializable {
+public class Page implements Serializable {
 
 	private static final long serialVersionUID = 4271243427231421634L;
-	public final static int DEFAULT_PAGE_No = 1;
+	public final static int DEFAULT_PAGE_NO = 1;
 	public final static int DEFAULT_PAGE_SIZE = 20;
 
-	private Integer pageNo = DEFAULT_PAGE_No;
+	private Integer pageNo = DEFAULT_PAGE_NO;
 	private Integer pageSize = DEFAULT_PAGE_SIZE;
 
 	public Integer getPageNo() {
@@ -36,7 +36,7 @@ public abstract class Page implements Serializable {
 	public int getStartOfPage() {
 		if (pageNo == 0) {
 			// 页数是从第一页是从1开始计算的
-			pageNo = DEFAULT_PAGE_No;
+			pageNo = DEFAULT_PAGE_NO;
 		}
 		return (pageNo - 1) * pageSize;
 	}
