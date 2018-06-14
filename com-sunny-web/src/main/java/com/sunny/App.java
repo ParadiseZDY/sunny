@@ -1,5 +1,7 @@
 package com.sunny;
 
+import com.alibaba.fastjson.JSON;
+import com.sunny.controller.ConstantController;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -65,6 +67,7 @@ public class App {
 
     public static void main(String[] args){
         SpringApplication.run(App.class,args);
+        logger.info("测试静态加载={}", JSON.toJSONString(ConstantController.map));
         logger.info("sunny project start success!");
     }
 }
