@@ -12,20 +12,20 @@ import java.util.List;
  **/
 public interface IGmsConfigService {
 
-	public GmsConfig selectByPrimaryKey(Integer id);
+	GmsConfig selectByPrimaryKey(Integer id);
 
-	public int deleteByPrimaryKey(Integer id);
+	int deleteByPrimaryKey(Integer id);
 
-	public int insertSelective(GmsConfig gmsConfig);
+	int insertSelective(GmsConfig gmsConfig);
 
-	public int updateByPrimaryKeySelective(GmsConfig gmsConfig);
+	int updateByPrimaryKeySelective(GmsConfig gmsConfig);
 
-	public int updateByPrimaryKey(GmsConfig gmsConfig);
+	int updateByPrimaryKey(GmsConfig gmsConfig);
 
-	public Long selectObjectListPageTotal(GmsConfig gmsConfig);
+	Long selectObjectListPageTotal(GmsConfig gmsConfig);
 
-	public List<GmsConfig> selectObjectListPage(GmsConfig gmsConfig);
+	List<GmsConfig> selectObjectListPage(GmsConfig gmsConfig);
 
-	public List<GmsConfig> selectByObjectList(GmsConfig gmsConfig);
+	List<GmsConfig> selectByObjectList(GmsConfig gmsConfig);
 
 }
