@@ -7,6 +7,7 @@ import com.sunny.rpc.IGmsConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author zhao.dy
@@ -27,6 +29,8 @@ public class HelloController{
 
     @Autowired
     private IGmsConfigService gmsConfigService;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @RequestMapping("/getHello")
     public String getHello(){
@@ -72,5 +76,12 @@ public class HelloController{
     public List<GmsConfig> postMethodJson(@RequestBody GmsConfig config){
         List<GmsConfig> configList = gmsConfigService.selectByObjectList(config);
         return configList;
+    }
+
+    @RequestMapping("/redisKeys")
+    public Set<String> keys(){
+        Set keys = redisTemplate.keys("*");
+        System.out.println(JSON.toJSONString(keys));
+        return keys;
     }
 }
