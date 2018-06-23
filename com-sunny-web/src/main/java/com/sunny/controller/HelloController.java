@@ -2,12 +2,15 @@ package com.sunny.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.sunny.domain.GmsConfig;
 import com.sunny.rpc.IGmsConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhao.dy
@@ -83,5 +87,23 @@ public class HelloController{
         Set keys = redisTemplate.keys("*");
         System.out.println(JSON.toJSONString(keys));
         return keys;
+    }
+
+    @RequestMapping("/setKey")
+    public String setKey(String key,String value){
+        ValueOperations forValue = redisTemplate.opsForValue();
+        forValue.set(key,value,10, TimeUnit.SECONDS);
+        return (String) forValue.get(key);
+    }
+
+    @RequestMapping("/setHash")
+    public Map setHash(String key1,String key2,String value){
+        HashOperations forHash = redisTemplate.opsForHash();
+        forHash.put(key1,key2,value);
+        List list = forHash.multiGet(key1, Lists.newArrayList(key2));
+        System.out.println(list);
+        Map map = forHash.entries(key1);
+        System.out.println(map);
+        return map;
     }
 }
