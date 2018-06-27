@@ -10,4 +10,6 @@ public interface IStudentService {
     Integer updateStudent();
 
     Integer saveStudent();
+
+    Integer queryStudent();
 }

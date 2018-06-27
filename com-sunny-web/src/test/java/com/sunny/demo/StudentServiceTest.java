@@ -15,9 +15,11 @@ public class StudentServiceTest extends CommonTest{
 
     @Test
     public void testMongo(){
-        Integer save = studentService.saveStudent();
-        System.out.println(save);
-        Integer update = studentService.updateStudent();
-        System.out.println(update);
+//        Integer save = studentService.saveStudent();
+//        System.out.println(save);
+//        Integer update = studentService.updateStudent();
+//        System.out.println(update);
+        Integer query = studentService.queryStudent();
+        System.out.println(query);
     }
 }

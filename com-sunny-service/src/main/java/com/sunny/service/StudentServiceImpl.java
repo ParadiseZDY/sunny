@@ -36,4 +36,17 @@ public class StudentServiceImpl implements IStudentService{
         return 1;
     }
 
+    @Override
+    public Integer queryStudent(){
+        Query query = new Query(Criteria.where("age").is(100));
+        Student one = mongoTemplate.findOne(query, Student.class);
+        System.out.println(one);
+        Query name = new Query(Criteria.where("name").regex(".*?炎.*"));
+        Student one1 = mongoTemplate.findOne(name, Student.class);
+        System.out.println(one1);
+        Student byId = mongoTemplate.findById(1, Student.class);
+        System.out.println(byId);
+        return 1;
+    }
+
 }
