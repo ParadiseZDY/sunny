@@ -3,11 +3,13 @@ package com.sunny.controller;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import com.mongodb.DB;
 import com.sunny.domain.GmsConfig;
 import com.sunny.rpc.IGmsConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -35,6 +37,8 @@ public class HelloController{
     private IGmsConfigService gmsConfigService;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @RequestMapping("/getHello")
     public String getHello(){
@@ -105,5 +109,13 @@ public class HelloController{
         Map map = forHash.entries(key1);
         System.out.println(map);
         return map;
+    }
+
+    @RequestMapping("/setMongo")
+    public void setMongo(){
+        DB db = mongoTemplate.getDb();
+        String name = db.getName();
+        boolean flag = db.collectionExists("myconnection");
+        System.out.println(name + ":" + flag);
     }
 }
