@@ -6,4 +6,8 @@ package com.sunny.rpc;
  * @date 2018/6/27
  */
 public interface IStudentService {
+
+    Integer updateStudent();
+
+    Integer saveStudent();
 }
