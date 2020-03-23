@@ -19,11 +19,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-        </dependency>
-
         <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -48,31 +43,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.oschina.j2cache</groupId>
-            <artifactId>j2cache</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-core</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jedis</artifactId>
-                    <groupId>redis.clients</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -103,6 +73,10 @@
             <artifactId>spring-boot-starter-redis</artifactId>
             <version>1.4.6.RELEASE</version>
             <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
                 <exclusion>
                     <artifactId>log4j-over-slf4j</artifactId>
                     <groupId>org.slf4j</groupId>
@@ -155,6 +129,10 @@
             <version>3.3.6</version>
             <exclusions>
                 <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
                     <artifactId>log4j</artifactId>
                     <groupId>log4j</groupId>
                 </exclusion>
@@ -166,6 +144,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <exclusions>
                 <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
                     <artifactId>spring-test</artifactId>
                     <groupId>org.springframework</groupId>
                 </exclusion>
@@ -175,11 +157,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>4.3.6.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
