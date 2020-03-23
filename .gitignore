@@ -11,3 +11,5 @@ target/
 *.bat
 .class
 dependency.txt
+LOG_FILE_IS_UNDEFINED
+*.properties
