@@ -1,7 +1,7 @@
 package com.sunny.demo.designer.decorator;
 
 /**
- * 装饰器模式父类
+ * 适配器模式父类
  *
  * @author dongyangz
  * @date 2020-03-23 17:53
